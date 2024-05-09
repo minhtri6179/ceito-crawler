@@ -10,4 +10,9 @@ RUN apt-get -u upgrade
 RUN apt-get -u update
 RUN apt-get -u autoremove
 
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
 CMD ["python", "main.py"]
